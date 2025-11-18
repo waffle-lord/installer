@@ -113,6 +113,7 @@ public static class PreCheckHelper
     private static List<string> ExtractVdfFieldsByName(string vdfPath, string fieldName)
     {
         var fieldValues = new List<string>();
+        if (!File.Exists(vdfPath)) return fieldValues;
         var libraryPathPattern = $@"""{fieldName}""\s+""(.*)""";
         foreach (var line in File.ReadLines(vdfPath))
         {
